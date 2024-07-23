@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image';
 
 interface cardProps{
     title?:string;
@@ -18,13 +17,15 @@ const CardClipboard:React.FC<cardProps> = ({title, head, description, source}) =
         <h2 className='text-white'>{head}</h2>
         <p className='text-slate-400'>{description}</p>
       </div>
+      <div className=''>
         <figure className='p-3'>
         <img
         src={source}
         alt="image"
-        className='rounded-lg'
+        className='rounded-lg max-h-full'
         />
         </figure>
+      </div>
       </div>
       </div>
   )

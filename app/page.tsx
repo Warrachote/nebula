@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import ProductCard from './components/ProductCard'
-import selectImageButton from './components/selectImage/selectImageButton'
 import CardClipboard from './components/CardClipboard'
 import CardSeparate from './components/CardSeparate'
+import SelectImageButton from './components/SelectImageButton';
 
 const Home: React.FC = () => {
   return (
@@ -14,13 +12,13 @@ const Home: React.FC = () => {
  
        <div className='min-h-[100px] rounded-lg shadow sm:col-span-4'>
        
-       <div className='absolute insert-0 flex items-center justify-cente pointer-events-none -right-10 -bottom-20'>
+       <div className='absolute insert-0 flex items-center justify-center pointer-events-none -right-10 -bottom-20'>
        <div className='w-[500px] h-[500px] rounded-full bg-gradient-radial from-violet-400 via-transparent'></div>
        </div>
-       <div className='absolute insert-0 flex items-center justify-cente pointer-events-none -bottom-28 -left-32 size-[600px]'>
+       <div className='absolute insert-0 flex items-center justify-center pointer-events-none -bottom-28 -left-32 size-[600px]'>
        <img src='https://as2.ftcdn.net/v2/jpg/02/45/37/73/1000_F_245377357_2d74nft8lDVBjHPQPKFqWy9ibb0Pp8Ph.jpg'></img>
         </div>
-        <div className='absolute insert-0 flex items-center justify-cente pointer-events-none -bottom-3 -left-32'>
+        <div className='absolute insert-0 flex items-center justify-center pointer-events-none -bottom-3 -left-32'>
        <div className='w-[600px] h-[400px] bg-gradient-to-br from-black via-black/80 to-pink-600/80'></div>
         </div>
         <div className='absolute insert-0 flex items-center justify-cente pointer-events-none -left-96 -top-96'>
@@ -37,11 +35,7 @@ const Home: React.FC = () => {
        colorful art.</p>
        
        <div className='mb-10'></div>
-       <Link href='/workPlace'>
-       <button className="bg-transparent hover:bg-gradient-to-r from-pink-300 via-purple-400 to-purple-600 text-pink-300 font-semibold hover:text-black py-2 px-4 border border-violet-500 hover:border-transparent rounded-full shadow-md shadow-violet-400/55">
-       Select an image from your device
-       </button>
-       </Link>
+       <SelectImageButton title="Select an image from your device" path="/workPlace"/>
 
        <div className='mb-10'></div>
        <h2 className='text-violet-200 font-extrabold text-4xl'>Tutorial video</h2>
