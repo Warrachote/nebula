@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 interface SelectImageButton {
   title:string;
-  path?:string;
+  path:string;
 }
 
 const SelectImageButton:React.FC<SelectImageButton> = ({title, path}) => {
