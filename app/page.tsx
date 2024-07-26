@@ -6,7 +6,6 @@ import SelectImageButton from './components/SelectImageButton';
 
 const Home: React.FC = () => {
   return (
-    <main>
      <body>
       <img src=''/>
        <div className='grid sm:grid-cols-12 grid-cols-1'>
@@ -41,10 +40,9 @@ const Home: React.FC = () => {
        <div className='mb-10'></div>
        <h2 className='text-violet-200 font-extrabold text-4xl'>Tutorial video</h2>
        <div className='mb-20'></div>
-       <video width="320" height="240" controls preload="none">
-      {/* <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="video/mp4" /> */
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=IMPDNweJs6tRKEB8" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>}
-      </video>
+
+      <iframe width="500" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=IMPDNweJs6tRKEB8" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+
        </div>
        </div>
  
@@ -72,7 +70,6 @@ const Home: React.FC = () => {
        </div>
        </div>
      </body>
-   </main>
    )
 };
 

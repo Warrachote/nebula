@@ -55,7 +55,7 @@ const workPlace = () => {
         <Displaylayer source="/Daisy.jpg"/>
         <div className='mb-5'></div>
         <div className='flex items-center justify-center'>
-        <SelectImageButton title="Select other image" path=""/>
+        <StyleButton title="Select other image" path=""/>
         </div>
         <div className='m-3 grid grid-cols-2 content-center'>
         <button className='text-white font-extrabold py-2 px-4 m-2 bg-gradient-to-t from-pink-800 to-pink-300 rounded-full hover hover:bg-gradient-to-r hover:from-pink-500 hover:to-pink-900'>Save this image</button>
