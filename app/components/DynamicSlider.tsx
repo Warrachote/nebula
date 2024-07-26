@@ -1,11 +1,7 @@
-// pages/index.tsx
 'use client'
-
 import React, { useState } from "react";
 import { NextPage } from 'next';
-import Link from 'next/link';
 import DynamicComponent from './DynamicComponent';
-import RangeSlider from './RangeSlider';
 
 const DynamicSlider: NextPage = () => {
   const [componentCount, setComponentCount] = useState<number>(1);
@@ -53,11 +49,11 @@ const DynamicSlider: NextPage = () => {
         </button>
         </div>
     </div>
-  </div>
-  <div className='max-h-screen overflow-y-auto'>
+      </div>
+  <div className='max-h-[500px] overflow-y-auto'>
       <div className="mt-6 w-full">
         {Array.from({ length: componentCount }).map((_, index) => (
-          <DynamicComponent key={index} />
+          <DynamicComponent key={index} label={index + 1}/>
         ))}
       </div>
     </div>

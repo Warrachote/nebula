@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Range, getTrackBackground } from 'react-range';
+import { useDebouce } from './Debouce';
 
 const STEP = 1;
 const MIN = 0;
@@ -8,6 +9,7 @@ const MAX = 100;
 
 const MultiRangeSlider: React.FC = () => {
   const [values, setValues] = useState<number[]>([20, 80]);
+  const debouncedValue = useDebouce(values);
 
   const handleInputChange = (index: number, value: string) => {
     const newValue = Math.max(MIN, Math.min(MAX, Number(value)));
@@ -24,7 +26,7 @@ const MultiRangeSlider: React.FC = () => {
   };
 
   return (
-    <div className="sticky top-4 flex flex-col items-center w-full max-w-md p-4 bg-transparent shadow-lg rounded-md">
+    <div className="sticky top-4 flex flex-col items-center w-full max-w-md p-4 bg-transparent rounded-md">
       <Range
         values={values}
         step={STEP}

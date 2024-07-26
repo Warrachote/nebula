@@ -21,24 +21,28 @@ const CardSeparate:React.FC<cardProps> = ({title,head,description}) => {
         <figure className='p-3'>
         <img
         src="/0.png"
-        alt="Movie"/>
+        alt="Movie"
+        className='rounded-lg max-h-full'/>
         </figure>
         <figure className='p-3'>
         <img
         src="/2.png"
-        alt="Movie"/>
+        alt="Movie"
+        className='rounded-lg max-h-full'/>
         </figure>
         </div>
         <div>
         <figure className='p-3'>
         <img
         src="/1.png"
-        alt="Movie"/>
+        alt="Movie"
+        className='rounded-lg max-h-full'/>
         </figure>
         <figure className='p-3'>
         <img
         src="/3.png"
-        alt="Movie"/>
+        alt="Movie"
+        className='rounded-lg max-h-full'/>
         </figure>
         </div>
       </div>
