@@ -10,7 +10,7 @@ import axios, { AxiosError } from 'axios';
 
 export const run_marigold = async (sId: string): Promise<any> => {
     try {
-        const response = await axios.get('http://134.102.202.239:5000/marigold', {
+        const response = await axios.get('api/marigold', {
             params: {
                 sessionId: sId
             }

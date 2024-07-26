@@ -47,14 +47,14 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ }) => {
     setMessage('');
 
     try {
-      const response = await axios.post(`http://134.102.202.239:5000/upload`, formData, {
+      const response = await axios.post(`api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
 
       });
       setMessage('File uploaded successfully');
-      run_marigold(sessionID);
+      await run_marigold(sessionID);
 
     } catch (error) {
       setMessage('Error uploading file');
