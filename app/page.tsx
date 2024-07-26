@@ -7,7 +7,6 @@ import SelectImageButton from './components/SelectImageButton';
 const Home: React.FC = () => {
   return (
      <body>
-      <img src=''/>
        <div className='grid sm:grid-cols-12 grid-cols-1'>
  
        <div className='min-h-[100px] shadow sm:col-span-4 bg-gradient-to-tl from-transparent via-violet-400/30 to-transparent'>
