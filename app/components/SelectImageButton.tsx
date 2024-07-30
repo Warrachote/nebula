@@ -5,13 +5,13 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { run_marigold } from '../utils/marigold';
+import styles from './SelectImageButton.module.css'
 
 interface SelectImageButton {
   title: string;
-  path: string;
 }
 
-const SelectImageButton: React.FC<SelectImageButton> = ({ }) => {
+const SelectImageButton: React.FC<SelectImageButton> = ({title}) => {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState('');
   const [sessionID, setSessionID] = useState<string | null>(null);
@@ -67,7 +67,18 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ }) => {
   return (
     <div>
       <input
+        type='file'
+        id="file-upload"
+        style={{display: 'none'}}
+        disabled={uploading}
+        onChange={handleFileChange}
+        accept='.jpg,.jpeg,.png'
+      >
+      </input>
+      <label
+        htmlFor="file-upload"
         className="
+          cursor-pointer
           bg-transparent
           hover:bg-gradient-to-r
           hover:from-pink-300
@@ -82,13 +93,21 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ }) => {
           hover:border-transparent
           rounded-full
           shadow-lg
-          shadow-violet-400/55"
-        type='file'
-        disabled={uploading}
-        onChange={handleFileChange}
-        accept='.jpg,.jpeg,.png'
-      >
-      </input>
+          shadow-violet-400/55
+          text-center">
+        {title}
+      </label>
+      {uploading && (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>NEBULA working for you...</p>
+        </div>
+      )}
+      {message && (
+        <p style={{ whiteSpace: 'pre-line' }}>
+          {message}
+        </p>
+      )}
     </div>
   )
 }
