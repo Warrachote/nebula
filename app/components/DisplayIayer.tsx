@@ -10,7 +10,7 @@ const Displaylayer:React.FC<Displaylayer> = ({source}) => {
         <img
         src={source}
         alt="image"
-        className='max-w-96 border border-violet-400'
+        className='w-fit border border-violet-400'
         />
     </div>
   )
