@@ -9,7 +9,7 @@ const Home: React.FC = () => {
      <body>
        <div className='grid sm:grid-cols-12 grid-cols-1'>
  
-       <div className='min-h-[100px] shadow sm:col-span-4 bg-gradient-to-tl from-transparent via-violet-400/30 to-transparent'>
+       <div className='min-h-[100px] shadow sm:col-span-4 bg-gradient-to-tl from-transparent via-violet-700/30 to-transparent'>
        
        {/* <div className='absolute insert-0 flex items-center justify-center pointer-events-none -right-10 -bottom-20'>
        <div className='w-[500px] h-[500px] rounded-full bg-gradient-radial from-violet-400 via-transparent'></div>
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
        colorful art.</p>
        
        <div className='mb-10'></div>
-       <SelectImageButton title="Select an image from your device" path="/workPlace"/>
+       <SelectImageButton title="Select an image from your device"/>
 
        <div className='mb-10'></div>
        <h2 className='text-violet-200 font-extrabold text-4xl'>Tutorial video</h2>
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
        </div>
        </div>
  
-       <div className='min-h-[100px] shadow sm:col-span-8 bg-gradient-to-tr from-transparent via-violet-400/30 to-transparent'>
+       <div className='min-h-[100px] shadow sm:col-span-8 bg-gradient-to-tr from-transparent via-violet-700/30 to-transparent'>
        <div className='grid sm:grid-cols-8 gap-2 mt-10'>
  
        <div className='sm:col-span-4'>

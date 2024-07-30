@@ -53,7 +53,7 @@ const DynamicSlider: NextPage = () => {
   <div className='max-h-[500px] overflow-y-auto'>
       <div className="mt-6 w-full">
         {Array.from({ length: componentCount }).map((_, index) => (
-          <DynamicComponent key={index} label={index + 1}/>
+          <DynamicComponent key={index} label={index + 1} index={index}/>
         ))}
       </div>
     </div>

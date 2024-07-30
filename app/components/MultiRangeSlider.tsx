@@ -1,15 +1,67 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Range, getTrackBackground } from 'react-range';
+import axios from 'axios';
 import { useDebouce } from './Debouce';
+import { getSessionID } from '../utils/session';
+
+interface MultiRangeSlider {
+  index:number;
+}
 
 const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const MultiRangeSlider: React.FC = () => {
+const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
   const [values, setValues] = useState<number[]>([20, 80]);
-  const debouncedValue = useDebouce(values);
+  const debouncedValues = useDebouce(values);
+  const [sessionID, setSessionID] = useState<string | null>(null);
+
+
+  useEffect(() => {
+    // Retrieve the session ID from local storage
+    const id = getSessionID();
+    setSessionID(id);
+  }, []);
+
+  useEffect(() => {
+    const fetchInitialValues = async () => {
+           try {
+        const response = await axios.get('api/marigold/layer',
+          {
+            params : {
+              sessionId: sessionID,
+              start: MIN,
+              end: MAX,
+              index: {index}
+            }
+          }
+        );
+        setValues(response.data.values);
+      } catch (error) {
+        console.error('Error fetching initial values:', error);
+      }
+    };
+
+    fetchInitialValues();
+  }, []);
+
+  // Update API when debounced values change
+  useEffect(() => {
+    const updateSliderValues = async () => {
+      try {
+        await axios.post('api/marigold/layer', { values: debouncedValues });
+      } catch (error) {
+        console.error('Error updating slider values:', error);
+      }
+    };
+    
+
+    if (debouncedValues) {
+      updateSliderValues();
+    }
+  }, [debouncedValues]);
 
   const handleInputChange = (index: number, value: string) => {
     const newValue = Math.max(MIN, Math.min(MAX, Number(value)));
