@@ -28,7 +28,7 @@ const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
   useEffect(() => {
     const fetchInitialValues = async () => {
            try {
-        const response = await axios.get('api/marigold/layer',
+        const response = await axios.get('/api/marigold/layer',
           {
             params : {
               sessionId: sessionID,
@@ -51,7 +51,7 @@ const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
   useEffect(() => {
     const updateSliderValues = async () => {
       try {
-        await axios.post('api/marigold/layer', { values: debouncedValues });
+        await axios.post('/api/marigold/layer', { values: debouncedValues });
       } catch (error) {
         console.error('Error updating slider values:', error);
       }
