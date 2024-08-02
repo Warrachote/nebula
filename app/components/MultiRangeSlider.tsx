@@ -19,17 +19,8 @@ const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
-  const [values, setValues] = useState<number[]>([20, 80]);
-  const debouncedValues = useDebouce(values);
-  const [sessionID, setSessionID] = useState<string | null>(null);
+const MultiRangeSlider: React.FC<MultiRangeSlider> = ({ index, sessionID, values, setValues, debouncedValues }) => {
 
-
-  useEffect(() => {
-    // Retrieve the session ID from local storage
-    const id = getSessionID();
-    setSessionID(id);
-  }, []);
 
   useEffect(() => {
     // update_layer_image();

@@ -54,7 +54,6 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
   useEffect(() => {
     if (fetch == true) {
       fetchImage();
-      console.log('fetch: this is false but ' + fetch)
     }
   }, [fetch])
   return (
@@ -69,7 +68,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
         values={sliderValues}
         debouncedValues={debouncedValues} />
       <div>
-        {fetch && (
+        {load && (
           <div className={styles.loading}>
             <div className={styles.spinner}></div>
             <p>NEBULA working for you...</p>
