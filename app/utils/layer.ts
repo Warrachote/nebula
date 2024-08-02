@@ -1,23 +1,28 @@
-// src/utils/marigold.ts
+// /app/utils/layer.ts
 import axios, { AxiosError } from 'axios';
 
 /**
- * Runs the Marigold API call with the provided session ID.
+ * Runs the layering API call with the provided parameter.
  *
  * @param sId - The session ID for the request.
+ * @param start - The start point for the request.
+ * @param end - The end point for the request.
+ * @param index - The index of layer for the request.
  * @returns A promise that resolves to the API response or an error message.
  */
-
-export const run_marigold = async (sId: string): Promise<any> => {
+export const layer = async (sId: string, start: number, end: number, index: number): Promise<any> => {
     try {
-        const response = await axios.get('/api/marigold', {
+        const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/marigold/layer', {
             params: {
-                sessionId: sId
+                sessionId: sId,
+                start: start,
+                end: end,
+                index: index,
             }
         });
 
         // Optionally, handle the response data here
-        console.log('Marigold API response:', response.data);
+        console.log('Layering API response:', response.data);
         return response.data;
     } catch (error) {
         // Check if the error is an Axios error and handle it accordingly

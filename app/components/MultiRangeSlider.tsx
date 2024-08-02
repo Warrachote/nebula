@@ -6,75 +6,61 @@ import { useDebouce } from './Debouce';
 import { getSessionID } from '../utils/session';
 
 interface MultiRangeSlider {
-  index:number;
+  index: number;
+  sessionID: String;
+  values: number[];
+  debouncedValues: number[];
+  setValues: (nVa: number[]) => void;
+  // onValuesChange: (values: number[]) => void;
+
 }
 
 const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
-  const [values, setValues] = useState<number[]>([20, 80]);
-  const debouncedValues = useDebouce(values);
-  const [sessionID, setSessionID] = useState<string | null>(null);
+const MultiRangeSlider: React.FC<MultiRangeSlider> = ({ index, sessionID, values, setValues, debouncedValues }) => {
+  // const [values, setValues] = useState<number[]>([20, 80]);
+  // const debouncedValues = useDebouce(values);
+  // const update_layer_image = async () => {
+  //   try {
+  //     const response = await axios.get('api/layer',
+  //       {
+  //         params: {
+  //           sessionId: String(sessionID),
+  //           start: String(debouncedValues[0]),
+  //           end: String(debouncedValues[1]),
+  //           index: String(index)
+  //         }
+  //       }
+  //     );
+  //     console.log(response)
+  //   } catch (error) {
+  //     console.error('Error updating slider values:', error);
+  //   }
+  // };
 
 
+
+  // Update API when debounced values change and session ID exist
   useEffect(() => {
-    // Retrieve the session ID from local storage
-    const id = getSessionID();
-    setSessionID(id);
-  }, []);
+    // update_layer_image();
+    // onValuesChange(debouncedValues);
+  }, [debouncedValues, sessionID]);
 
-  useEffect(() => {
-    const fetchInitialValues = async () => {
-           try {
-        const response = await axios.get('api/marigold/layer',
-          {
-            params : {
-              sessionId: sessionID,
-              start: MIN,
-              end: MAX,
-              index: {index}
-            }
-          }
-        );
-        setValues(response.data.values);
-      } catch (error) {
-        console.error('Error fetching initial values:', error);
-      }
-    };
-
-    fetchInitialValues();
-  }, []);
-
-  // Update API when debounced values change
-  useEffect(() => {
-    const updateSliderValues = async () => {
-      try {
-        await axios.post('api/marigold/layer', { values: debouncedValues });
-      } catch (error) {
-        console.error('Error updating slider values:', error);
-      }
-    };
-    
-
-    if (debouncedValues) {
-      updateSliderValues();
-    }
-  }, [debouncedValues]);
-
-  const handleInputChange = (index: number, value: string) => {
+  const handleInputChange = (indexlocal: number, value: string) => {
     const newValue = Math.max(MIN, Math.min(MAX, Number(value)));
     const newValues = [...values];
-    newValues[index] = newValue;
+    newValues[indexlocal] = newValue;
 
     // Ensure min is always less than max
     if (newValues[0] >= newValues[1]) {
-      if (index === 0) newValues[1] = newValue + 1;
+      if (indexlocal === 0) newValues[1] = newValue + 1;
       else newValues[0] = newValue - 1;
     }
 
     setValues(newValues);
+    console.log(index + '    ' + indexlocal + '   ' + value);
   };
 
   return (

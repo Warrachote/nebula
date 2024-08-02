@@ -1,23 +1,24 @@
-// src/utils/marigold.ts
+// /app/utils/delete_layer.ts
 import axios, { AxiosError } from 'axios';
 
 /**
- * Runs the Marigold API call with the provided session ID.
+ * Runs the layering API call with the provided session ID.
  *
  * @param sId - The session ID for the request.
  * @returns A promise that resolves to the API response or an error message.
  */
-
-export const run_marigold = async (sId: string): Promise<any> => {
+export const delete_layer = async (sId: string): Promise<any> => {
+    const formData = new FormData();
+    formData.append("sessionId", sId);
     try {
-        const response = await axios.get('/api/marigold', {
-            params: {
-                sessionId: sId
+        const response = await axios.post('https://dynamic-202-239.informatik.uni-bremen.de:5000/del-layer', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
             }
         });
 
         // Optionally, handle the response data here
-        console.log('Marigold API response:', response.data);
+        console.log('delete-layer API response:', response.data);
         return response.data;
     } catch (error) {
         // Check if the error is an Axios error and handle it accordingly

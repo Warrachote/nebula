@@ -6,12 +6,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { run_marigold } from '../utils/marigold';
 import styles from './SelectImageButton.module.css'
+import { delete_layer } from '../utils/delete_layer';
 
 interface SelectImageButton {
   title: string;
 }
 
-const SelectImageButton: React.FC<SelectImageButton> = ({title}) => {
+const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState('');
   const [sessionID, setSessionID] = useState<string | null>(null);
@@ -30,7 +31,7 @@ const SelectImageButton: React.FC<SelectImageButton> = ({title}) => {
       console.log('Invoking upload')
       await handleSubmit(file);
     } else {
-      console.log('select file is null')
+      console.log('selected file is null')
     }
 
   };
@@ -47,29 +48,37 @@ const SelectImageButton: React.FC<SelectImageButton> = ({title}) => {
     setMessage('');
 
     try {
-      const response = await axios.post(`api/upload`, formData, {
+      const response = await axios.post(`/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
 
       });
-      setMessage('File uploaded successfully');
-      await run_marigold(sessionID);
-
+      console.log(response);
     } catch (error) {
-      setMessage('Error uploading file');
       console.error('Error uploading file:', error);
-    } finally {
-      setUploading(false);
-      router.push('/workPlace');
     }
+    try {
+      await run_marigold(sessionID);
+    } catch (error) {
+      console.error('Error running model:', error);
+    }
+    try {
+      await delete_layer(sessionID);
+      setUploading(false);
+      router.push("/workPlace")
+    } catch (error) {
+      console.error('Error deleting layer:', error);
+    }
+
+
   };
   return (
     <div>
       <input
         type='file'
         id="file-upload"
-        style={{display: 'none'}}
+        style={{ display: 'none' }}
         disabled={uploading}
         onChange={handleFileChange}
         accept='.jpg,.jpeg,.png'
@@ -105,7 +114,6 @@ const SelectImageButton: React.FC<SelectImageButton> = ({title}) => {
       )}
       {message && (
         <p style={{ whiteSpace: 'pre-line' }}>
-          {message}
         </p>
       )}
     </div>
