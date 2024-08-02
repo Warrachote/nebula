@@ -19,30 +19,18 @@ const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const MultiRangeSlider: React.FC<MultiRangeSlider> = ({ index, sessionID, values, setValues, debouncedValues }) => {
-  // const [values, setValues] = useState<number[]>([20, 80]);
-  // const debouncedValues = useDebouce(values);
-  // const update_layer_image = async () => {
-  //   try {
-  //     const response = await axios.get('api/layer',
-  //       {
-  //         params: {
-  //           sessionId: String(sessionID),
-  //           start: String(debouncedValues[0]),
-  //           end: String(debouncedValues[1]),
-  //           index: String(index)
-  //         }
-  //       }
-  //     );
-  //     console.log(response)
-  //   } catch (error) {
-  //     console.error('Error updating slider values:', error);
-  //   }
-  // };
+const MultiRangeSlider: React.FC<MultiRangeSlider> = ({index}) => {
+  const [values, setValues] = useState<number[]>([20, 80]);
+  const debouncedValues = useDebouce(values);
+  const [sessionID, setSessionID] = useState<string | null>(null);
 
 
+  useEffect(() => {
+    // Retrieve the session ID from local storage
+    const id = getSessionID();
+    setSessionID(id);
+  }, []);
 
-  // Update API when debounced values change and session ID exist
   useEffect(() => {
     // update_layer_image();
     // onValuesChange(debouncedValues);
