@@ -66,7 +66,7 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
     try {
       await delete_layer(sessionID);
       setUploading(false);
-      router.push("/workPlace")
+      router.push("/WorkPlace")
     } catch (error) {
       console.error('Error deleting layer:', error);
     }

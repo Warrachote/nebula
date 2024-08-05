@@ -9,7 +9,7 @@ import SaveAllButton from '../components/SaveAllButton'
 import { getSessionID } from '../utils/session'
 import styles from '../components/SelectImageButton.module.css'
 
-const workPlace = () => {
+const WorkPlace = () => {
   const [previewurl, setPreviewurl] = useState('');
   const [componentCount, setComponentCount] = useState<number>(1);
   const [sessionID, setSessionID] = useState<string | null>(null);
@@ -81,4 +81,4 @@ const workPlace = () => {
   }
 }
 
-export default workPlace
+export default WorkPlace
