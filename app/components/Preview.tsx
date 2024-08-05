@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import Displaylayer from './DisplayIayer';
 import SelectImageButton from './SelectImageButton';
 
-const ChangeImage = () => {
+interface Preview {
+    previewurl?:string;
+}
+
+const ChangeImage: React.FC<Preview> = ({previewurl}) => {
     const [stage, setStage] = useState('true');
     const [source, setSource] = useState('/Daisy.jpg');
     const [label, setLable] = useState('Swap to outline image')
@@ -11,7 +15,7 @@ const ChangeImage = () => {
     const handleChange = () => {
         if (stage === 'true') {
             setStage('false');
-            setSource('/0.png');
+            setSource({previewurl});
             setLable('Swap to original image')
         } else {
             setStage('true');

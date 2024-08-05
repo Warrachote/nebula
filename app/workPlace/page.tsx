@@ -1,10 +1,13 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Checkbox from '../components/Checkbox'
 import DynamicSlider from '../components/DynamicSlider'
 import SelectImageButton from '../components/SelectImageButton'
 import Preview from '../components/Preview'
 
 const workPlace = () => {
+  const [previewurl, setPreviewurl] = useState('test')
+
   return (
     <div className='grid md:grid-cols-12 grid-cols-1 gap-1 w-full h-full'>
       <div className='min-h-[100px] sm:col-span-4 shadow bg-gradient-to-tl from-transparent via-violet-600/30 to-transparent p-5'>
@@ -14,7 +17,7 @@ const workPlace = () => {
         <div className='mb-7'></div>
         <div className='text-slate-400 font-black text-l'>NUMBER OF LAYER</div>
         <div className='mb-2'></div>
-        <DynamicSlider />
+        <DynamicSlider previewurl={previewurl} setPreviewurl={setPreviewurl}/>
       </div>
       <div className='min-h-[100px] shadow sm:col-span-4 bg-gradient-to-tr from-transparent via-violet-600/30 to-transparent p-5 h-full'>
         <div className='text-violet-300 font-extrabold text-3xl mt-7'>Option</div>
@@ -35,7 +38,7 @@ const workPlace = () => {
       <div className='min-h-[100px] sm:col-span-4 shadow p-5 bg-gradient-to-tl from-transparent via-violet-600/30 to-transparent'>
         <div className='text-violet-300 font-extrabold text-3xl mt-7'>Preview</div>
         <div className='mb-12'></div>
-        <Preview />
+        <Preview previewurl={previewurl}/>
         <div className='mb-7'></div>
         <div className='flex items-center justify-center'>
           <SelectImageButton title='Select other image' />

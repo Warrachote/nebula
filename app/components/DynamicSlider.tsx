@@ -7,7 +7,12 @@ import DynamicComponent from './DynamicComponent';
 import { getSessionID } from "../utils/session";
 import styles from './SelectImageButton.module.css'
 
-const DynamicSlider: NextPage = () => {
+interface DynamicSlider {
+  previewurl:string;
+  setPreviewurl: (url:string) => void;
+}
+
+const DynamicSlider: NextPage<DynamicSlider> = ({previewurl, setPreviewurl}) => {
   const [componentCount, setComponentCount] = useState<number>(1);
 
   const handleIncrement = () => {
@@ -65,7 +70,7 @@ const DynamicSlider: NextPage = () => {
         <div className='max-h-[500px] overflow-y-auto'>
           <div className="mt-6 w-full">
             {Array.from({ length: componentCount }).map((_, index) => (
-              <DynamicComponent key={index} label={index + 1} index={index} sId={sessionID} />
+              <DynamicComponent key={index} label={index + 1} index={index} sId={sessionID} previewurl={previewurl} setPreviewurl={setPreviewurl}/>
             ))}
           </div>
         </div>
