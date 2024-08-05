@@ -11,15 +11,6 @@ const Home: React.FC = () => {
 
       <div className='min-h-[100px] shadow sm:col-span-4 bg-gradient-to-tl from-transparent via-violet-700/30 to-transparent'>
 
-        {/* <div className='absolute insert-0 flex items-center justify-center pointer-events-none -right-10 -bottom-20'>
-       <div className='w-[500px] h-[500px] rounded-full bg-gradient-radial from-violet-400 via-transparent'></div>
-       </div>
-        <div className='absolute insert-0 flex items-center justify-center pointer-events-none bottom-4 -left-32'>
-       <div className='w-[600px] h-[400px] bg-gradient-to-b from-black via-black/80 to-pink-600/80'></div>
-        </div>
-        <div className='absolute insert-0 flex items-center justify-center pointer-events-none -bottom-96 -left-32'>
-       <div className='w-[600px] h-[400px] bg-gradient-to-t from-black via-black/80 to-pink-600/80'></div>
-        </div> */}
         <div className='absolute insert-0 flex items-center justify-cente pointer-events-none -left-96 -top-96'>
           <div className='w-[800px] h-[800px] rounded-full bg-gradient-radial from-violet-500 via-transparent'></div>
         </div>
