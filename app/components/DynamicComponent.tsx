@@ -7,7 +7,7 @@ import { fetchImageWithFallback } from './ImageRequest';
 import axios from 'axios';
 import { useDebouce } from './Debouce';
 import styles from './SelectImageButton.module.css'
-
+import { make_outline } from '../utils/outline';
 interface DynamicComponent {
   label: number;
   index: number;
@@ -23,7 +23,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
   const update_layer_image = async (debouncedValues: number[]) => {
     setload(true);
     try {
-      const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/layer',
+      const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/marigold/layer',
         {
           params: {
             sessionId: String(sId),
@@ -34,6 +34,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
         }
       );
       console.log(response)
+      await make_outline(sId, debouncedValues[1], index);
       setFetch(true);
     } catch (error) {
       console.error('Error updating slider values:', error);
@@ -57,6 +58,8 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
       fetchImage();
     }
   }, [fetch])
+
+
   return (
     <div>
       <label className='text-violet-200 font-bold text-3xl'>Layer {label}</label>
