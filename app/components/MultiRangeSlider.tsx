@@ -1,9 +1,6 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Range, getTrackBackground } from 'react-range';
-import axios from 'axios';
-import { useDebouce } from './Debouce';
-import { getSessionID } from '../utils/session';
 
 interface MultiRangeSlider {
   index: number;
@@ -11,7 +8,7 @@ interface MultiRangeSlider {
   values: number[];
   debouncedValues: number[];
   setValues: (nVa: number[]) => void;
-  // onValuesChange: (values: number[]) => void;
+
 
 }
 
@@ -19,13 +16,8 @@ const STEP = 1;
 const MIN = 0;
 const MAX = 100;
 
-const MultiRangeSlider: React.FC<MultiRangeSlider> = ({ index, sessionID, values, setValues, debouncedValues }) => {
+const MultiRangeSlider: React.FC<MultiRangeSlider> = ({ index, values, setValues }) => {
 
-
-  useEffect(() => {
-    // update_layer_image();
-    // onValuesChange(debouncedValues);
-  }, [debouncedValues, sessionID]);
 
   const handleInputChange = (indexlocal: number, value: string) => {
     const newValue = Math.max(MIN, Math.min(MAX, Number(value)));

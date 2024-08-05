@@ -23,7 +23,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
   const update_layer_image = async (debouncedValues: number[]) => {
     setload(true);
     try {
-      const response = await axios.get('api/layer',
+      const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/layer',
         {
           params: {
             sessionId: String(sId),
@@ -37,6 +37,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
       setFetch(true);
     } catch (error) {
       console.error('Error updating slider values:', error);
+      setload(false);
     }
   };
   const fetchImage = async () => {
