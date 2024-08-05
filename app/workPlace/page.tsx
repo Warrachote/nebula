@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Checkbox from '../components/Checkbox'
 import DynamicSlider from '../components/DynamicSlider'
 import SelectImageButton from '../components/SelectImageButton'
@@ -8,7 +8,7 @@ import SaveButton from '../components/SaveButton'
 import SaveAllButton from '../components/SaveAllButton'
 
 const workPlace = () => {
-  const [previewurl, setPreviewurl] = useState('test')
+  const [previewurl, setPreviewurl] = useState('');
 
   return (
     <div className='grid md:grid-cols-12 grid-cols-1 gap-1 w-full h-full'>
@@ -17,7 +17,7 @@ const workPlace = () => {
         <div className='mb-10'></div>
         <div className='text-white font-extrabold text-2xl'>Layers</div>
         <div className='mb-7'></div>
-        <div className='text-slate-400 font-black text-l'>NUMBER OF LAYER</div>
+        <div className='text-slate-400 font-black text-lg'>NUMBER OF LAYER</div>
         <div className='mb-2'></div>
         <DynamicSlider previewurl={previewurl} setPreviewurl={setPreviewurl}/>
       </div>
@@ -26,15 +26,17 @@ const workPlace = () => {
         <div className='mb-10'></div>
         <div className='text-white font-extrabold text-2xl'>Adjust image</div>
         <div className='mb-7'></div>
-        <div className='text-slate-400 font-black text-l'>FOR DETECT SPECIFIC OBJECT</div>
+        <div className='text-slate-400 font-black text-lg'>FOR DETECT SPECIFIC OBJECT</div>
         <Checkbox title='Salient' id='masked' name='masked' disable={true} />
+        <div className='text-slate-400 font-black text-xs'>*This will not avalible for BETA release version of NEBULA</div>
 
         <div className='mb-7'></div>
         <div className='w-full h-[1px] bg-slate-400 rounded-lg opacity-50'></div>
 
         <div className='mb-7'></div>
-        <div className='text-slate-400 font-black text-l'>FOR CHANGE BACKGROUND COLOR OF THE IMAGE</div>
+        <div className='text-slate-400 font-black text-lg'>FOR CHANGE BACKGROUND COLOR OF THE IMAGE</div>
         <Checkbox title='Black background' id='blackBackground' name='blackBackground' disable={true} />
+        <div className='text-slate-400 font-black text-xs'>*This will not avalible for BETA release version of NEBULA</div>
       </div>
       <div className='min-h-[100px] sm:col-span-4 shadow p-5 bg-gradient-to-tl from-transparent via-violet-600/30 to-transparent'>
         <div className='text-violet-300 font-extrabold text-3xl mt-7'>Preview</div>

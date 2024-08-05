@@ -25,7 +25,7 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId, previ
   const update_layer_image = async (debouncedValues: number[]) => {
     setload(true);
     try {
-      const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/layer',
+      const response = await axios.get('https://dynamic-202-239.informatik.uni-bremen.de:5000/marigold/layer',
         {
           params: {
             sessionId: String(sId),
@@ -50,6 +50,10 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId, previ
     setPreviewurl(url);
   };
 
+  const changeIm = () => {
+    setPreviewurl('/0.png');
+  }
+
   useEffect(() => {
     update_layer_image(debouncedValues);
 
@@ -70,7 +74,8 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId, previ
         sessionID={sId}
         setValues={setsliderValues}
         values={sliderValues}
-        debouncedValues={debouncedValues} />
+        debouncedValues={debouncedValues}/>
+      {/* <button onClick={changeIm}>click me</button> */}
       <div>
         {load && (
           <div className={styles.loading}>
