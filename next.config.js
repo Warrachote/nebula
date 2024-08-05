@@ -1,19 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = { output: 'export', }
 
 module.exports = {
-    async rewrites() {
-        return [
-            {
-                source: '/api/upload',
-                destination: 'https://dynamic-202-239.informatik.uni-bremen.de:5000/upload',
-            }, {
-                source: '/api/marigold',
-                destination: 'https://dynamic-202-239.informatik.uni-bremen.de:5000/marigold',
-            }, {
-                source: '/api/layer',
-                destination: 'https://dynamic-202-239.informatik.uni-bremen.de:5000/marigold/layer',
-            }
-        ];
-    },
+    nextConfig
 }
