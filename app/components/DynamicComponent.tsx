@@ -12,9 +12,11 @@ interface DynamicComponent {
   label: number;
   index: number;
   sId: string;
+  previewurl:string;
+  setPreviewurl: (url:string) => void;
 }
 
-const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => {
+const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId, previewurl, setPreviewurl }) => {
   const [imageUrl, setImageUrl] = useState<string>('');
   const [sliderValues, setsliderValues] = useState<number[]>([20, 80]);
   const debouncedValues = useDebouce(sliderValues);
@@ -46,7 +48,12 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
     setImageUrl(url);
     setFetch(false);
     setload(false);
+    setPreviewurl(url);
   };
+
+  const changeIm = () => {
+    setPreviewurl('/0.png');
+  }
 
   useEffect(() => {
     update_layer_image(debouncedValues);
@@ -70,7 +77,8 @@ const DynamicComponent: React.FC<DynamicComponent> = ({ label, index, sId }) => 
         sessionID={sId}
         setValues={setsliderValues}
         values={sliderValues}
-        debouncedValues={debouncedValues} />
+        debouncedValues={debouncedValues}/>
+      {/* <button onClick={changeIm}>click me</button> */}
       <div>
         {load && (
           <div className={styles.loading}>
