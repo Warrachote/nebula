@@ -8,6 +8,7 @@ import SaveButton from '../components/SaveButton'
 import SaveAllButton from '../components/SaveAllButton'
 import { getSessionID } from '../utils/session'
 import styles from '../components/SelectImageButton.module.css'
+import GobackButton from '../components/GobackButton'
 
 const WorkPlace = () => {
   const [previewurl, setPreviewurl] = useState('');
@@ -55,7 +56,8 @@ const WorkPlace = () => {
           <Preview previewurl={previewurl} />
           <div className='mb-7'></div>
           <div className='flex items-center justify-center'>
-            <SelectImageButton title='Select other image' />
+            {/* <SelectImageButton title='Select other image' /> */}
+            <GobackButton title={'Select other image'} />
           </div>
           <div className='mb-5'></div>
           <div className='m-3 content-center'>

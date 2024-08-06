@@ -65,8 +65,15 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
     }
     try {
       await delete_layer(sessionID);
+      if (window.location.pathname == "/WorkPlace") {
+        console.log(window.location.pathname == "/WorkPlace")
+        router.refresh
+      } else {
+        router.push("/WorkPlace");
+
+      }
       setUploading(false);
-      router.push("/WorkPlace")
+
     } catch (error) {
       console.error('Error deleting layer:', error);
     }

@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           <h2 className='text-violet-200 font-extrabold text-4xl'>Tutorial video</h2>
           <div className='mb-20'></div>
 
-          <iframe width="500" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=IMPDNweJs6tRKEB8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          {/* <iframe width="500" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=IMPDNweJs6tRKEB8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe> */}
 
         </div>
       </div>
