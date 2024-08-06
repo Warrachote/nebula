@@ -12,6 +12,6 @@ export const getSessionID = (): string => {
     sessionID = uuidv4();
     localStorage.setItem(SESSION_ID_KEY, sessionID);
   }
-  
+
   return sessionID;
 };

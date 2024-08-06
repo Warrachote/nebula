@@ -8,6 +8,7 @@ import { useDebouce } from './Debouce';
 
 interface SaveButtonInterface {
     content: string;
+    
 }
 
 const SaveButton: React.FC<SaveButtonInterface> = ({ content }) => {

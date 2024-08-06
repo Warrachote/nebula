@@ -10,17 +10,19 @@ import styles from './SelectImageButton.module.css'
 interface DynamicSlider {
   previewurl:string;
   setPreviewurl: (url:string) => void;
+  componentCount:any;
+  setComponentCount:(value:any) => void;
 }
 
-const DynamicSlider: NextPage<DynamicSlider> = ({previewurl, setPreviewurl}) => {
-  const [componentCount, setComponentCount] = useState<number>(1);
+const DynamicSlider: NextPage<DynamicSlider> = ({previewurl, setPreviewurl,componentCount,setComponentCount}) => {
+
 
   const handleIncrement = () => {
-    setComponentCount(prevValue => prevValue + 1);
+    setComponentCount((prevValue: number) => prevValue + 1);
   };
 
   const handleDecrement = () => {
-    setComponentCount(prevValue => (prevValue > 1 ? prevValue - 1 : 1));
+    setComponentCount((prevValue: number) => (prevValue > 1 ? prevValue - 1 : 1));
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

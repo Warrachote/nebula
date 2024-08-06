@@ -48,7 +48,7 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
     setMessage('');
 
     try {
-      const response = await axios.post(`/api/upload`, formData, {
+      const response = await axios.post(`https://dynamic-202-239.informatik.uni-bremen.de:5000/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -65,8 +65,15 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
     }
     try {
       await delete_layer(sessionID);
+      if (window.location.pathname == "/WorkPlace") {
+        console.log(window.location.pathname == "/WorkPlace")
+        router.refresh
+      } else {
+        router.push("/WorkPlace");
+
+      }
       setUploading(false);
-      router.push("/workPlace")
+
     } catch (error) {
       console.error('Error deleting layer:', error);
     }
