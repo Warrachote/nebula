@@ -65,11 +65,11 @@ const SelectImageButton: React.FC<SelectImageButton> = ({ title }) => {
     }
     try {
       await delete_layer(sessionID);
-      if (window.location.pathname == "/WorkPlace") {
-        console.log(window.location.pathname == "/WorkPlace")
+      if (window.location.pathname == "/workPlace") {
+        console.log(window.location.pathname == "/workPlace")
         router.refresh
       } else {
-        router.push("/WorkPlace");
+        router.push("/workPlace");
 
       }
       setUploading(false);

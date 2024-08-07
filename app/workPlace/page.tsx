@@ -10,7 +10,7 @@ import { getSessionID } from '../utils/session'
 import styles from '../components/SelectImageButton.module.css'
 import GobackButton from '../components/GobackButton'
 
-const WorkPlace = () => {
+const workPlace = () => {
   const [previewurl, setPreviewurl] = useState('');
   const [componentCount, setComponentCount] = useState<number>(1);
   const [sessionID, setSessionID] = useState<string | null>(null);
@@ -83,4 +83,4 @@ const WorkPlace = () => {
   }
 }
 
-export default WorkPlace
+export default workPlace
